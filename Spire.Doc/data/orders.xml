@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="yes"?>
+<Data>
+  <Customer>
+    <Number>59</Number>
+    <Address>rue de l'Abbaye</Address>
+    <City>Auckland</City>
+    <PhoneNumber>171-5557788</PhoneNumber>
+    <Date>06/01/2010</Date>
+    <Total>640.00</Total>
+    <Order>
+      <Name>Order1</Name>
+      <UnitPrice>60.00</UnitPrice>
+      <Quantity>10</Quantity>
+      <ItemTotal>600.00</ItemTotal>
+    </Order>
+    <Order>
+      <Name>Order2</Name>
+      <UnitPrice>40.00</UnitPrice>
+      <Quantity>1</Quantity>
+      <ItemTotal>40.00</ItemTotal>
+    </Order>
+  </Customer>
+  <Customer>
+    <Number>120</Number>
+    <Address>Hanover Sq</Address>
+    <City>Auckland</City>
+    <PhoneNumber>0921-123465</PhoneNumber>
+    <Date>06/01/2010</Date>
+    <Total>50.00</Total>
+    <Order>
+      <Name>Order3</Name>
+      <UnitPrice>30.00</UnitPrice>
+      <Quantity>1</Quantity>
+      <ItemTotal>30.00</ItemTotal>
+    </Order>
+    <Order>
+      <Name>Order4</Name>
+      <UnitPrice>10.00</UnitPrice>
+      <Quantity>2</Quantity>
+      <ItemTotal>20.00</ItemTotal>
+    </Order>
+  </Customer>
+</Data>

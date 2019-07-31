@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<user>
+	<email>harry.hu@e-iceblue.com</email>
+	<username>harry.hu</username>
+	<company_name>e-iceblue</company_name>
+	<title>Mr.</title>
+	<first_name>Harry</first_name>
+	<last_name>Hu</last_name>
+	<address1>Dalu.Ziyunjinsha, Beisen Road North 96, Chengdu, China</address1>
+	<city>Chengdu</city>
+	<postal_code>610000</postal_code>
+	<country>China</country>
+	<state>Sichuan</state>
+	<phone>028-81705109</phone>
+	<fax>028-81705109</fax>
+	<agreement_of_terms>true</agreement_of_terms>
+</user>
