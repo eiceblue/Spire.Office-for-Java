@@ -9,15 +9,15 @@ As an independent Java component, Spire.Office for Java doesn't require Microsof
 
 Spire.Doc for Java is a professional Java Word API that enables Java applications to create, convert, manipulate and print Word documents without using Microsoft Word. It supports Word97-2003, Word 2007, Word 2010 and Word 2013 file formats. Moreover, Spire.Doc for Java offers a series of conversion features such as convert Word 97/2003/2007/2010/2013 to TXT, HTML and vice versa, convert Word to PDF, XPS, XML and SVG.
 
-***Spire.PDF for Java***
-
-Spire.PDF for Java is a feature rich PDF API that enables Java applications to create, read, write, convert and print PDF documents without using Adobe Acrobat. It supports PDF version 1.2 to version 1.7. Additionally, Spire.PDF for Java can be easily applied to convert PDF to XPS, XPS to PDF, PDF to SVG, PDF to Word, PDF to HTML and PDF to PDF/A in high quality.
-
 ***Spire.Presentation for Java***
 
 Spire.Presentation for Java is a professional PowerPoint API that enables Java applications to create, read, write, convert and save PowerPoint documents without using Microsoft PowerPoint. It supports PPT, PPS, PPTX, and PPSX file formats.
 
 A rich set of features can be supported by Spire.Presentation for Java, like convert PowerPoint to EMF, PNG, TIFF, PDF, XPS and SVG, add/remove slide, create chart, create table, add bullets, encrypt and decrypt PowerPoint document, add watermark, add hyperlink, add shapes, insert/extract image, extract text, set animation, add footer, add/delete comment, add note, create SmartArt and many more.
+
+***Spire.PDF for Java***
+
+Spire.PDF for Java is a feature rich PDF API that enables Java applications to create, read, write, convert and print PDF documents without using Adobe Acrobat. It supports PDF version 1.2 to version 1.7. Additionally, Spire.PDF for Java can be easily applied to convert PDF to XPS, XPS to PDF, PDF to SVG, PDF to Word, PDF to HTML and PDF to PDF/A in high quality.
 
 ***Spire.Barcode for Java***
 
