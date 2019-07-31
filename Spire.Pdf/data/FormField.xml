@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<form>
+  <section name="Customer Information">
+    <field id="email" label="Email" type="text" required="true"/>
+    <field id="username" label="Username" type="text" required="true"/>
+    <field id="password" label="Password" type="password" required="true"/>
+    <field id="password2" label="Confirm Password" type="password" required="true"/>
+    <field id="email_format" label="Email Format" type="list" multiple="true">
+      <item>Text</item>
+      <item>HTML</item>
+      <item>Attachment</item>
+    </field>
+  </section>
+  <section name="Bill To Information">
+    <field id="company_name " label="Company Name" type="text"/>
+    <field id="title" label="Title" type="list">
+      <item>Mr.</item>
+      <item>Mrs.</item>
+      <item>Miss.</item>
+      <item>Ms.</item>
+      <item>Dr.</item>
+      <item>Prof.</item>
+    </field>
+    <field id="first_name" label="First Name" type="text" required="true"/>
+    <field id="last_name" label="Last Name" type="text" required="true"/>
+    <field id="middle_name" label="Middle Name" type="text"/>
+    <field id="address1" label="Address 1" type="text" required="true" multiple="true"/>
+    <field id="address2" label="Address 2" type="text" multiple="true"/>
+    <field id="city" label="City" type="text" required="true"/>
+    <field id="postal_code" label="Zip/Postal Code" type="text" required="true"/>
+    <field id="country" label="Country" type="list" required="true">
+      <item value="CAN">Canada</item>
+      <item value="USA" selected="true">United States</item>
+      <item value="OTS">Others</item>
+    </field>
+    <field id="state" label="State/Province/Region" type="text" required="true"/>
+    <field id="phone" label="Phone" type="text" required="true"/>
+    <field id="mobile_phone" label="Mobile phone" type="text"/>
+    <field id="fax" label="Fax" type="text"/>
+  </section>
+  <section name="Send Registration">
+    <field id="agreement_of_terms" label="I agree to the Terms of Service" type="checkbox" required="true"></field>
+  </section>
+</form>
