@@ -1,0 +1,5 @@
+﻿Demo of Spire.Doc
+
+Spire.Doc for Java is a professional Java Word API that enables Java applications to create, convert, manipulate and print Word documents without using Microsoft Office.
+
+A plenty of Word document processing tasks can be performed by Spire.Doc for Java, such as creating, reading, editing, converting and printing Word documents, inserting image, adding header and footer, creating table, adding form field and mail merge field, adding bookmark and watermark, adding hyperlink, seting background color/image, adding footnote and endnote, encrypting Word documents.

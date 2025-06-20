@@ -6,13 +6,13 @@ public class applyColorScalesToDataRange {
     public static void main(String[] args) throws Exception {
         String output = "output/applyColorScalesToDataRange.xlsx";
 
-        //create a workbook.
+        //Create a new instance of Workbook
         Workbook workbook = new Workbook();
 
-        //get the first worksheet.
+        //Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //insert data to cell range from A1 to C4.
+        //Set numeric values for cells A1 to C4 in the worksheet
         sheet.getCellRange("A1").setNumberValue( 582);
         sheet.getCellRange("A2").setNumberValue( 234);
         sheet.getCellRange("A3").setNumberValue( 314);
@@ -25,16 +25,21 @@ public class applyColorScalesToDataRange {
         sheet.getCellRange("C2").setNumberValue( 700);
         sheet.getCellRange("C3").setNumberValue(920);
         sheet.getCellRange("C4").setNumberValue( 450);
+
+        //Set the row height and column width for the allocated range in the worksheet
         sheet.getAllocatedRange().setRowHeight(15 );
         sheet.getAllocatedRange().setColumnWidth(17);
 
-        //add color scales.
+       //Add conditional formatting to the worksheet
         XlsConditionalFormats xcfs = sheet.getConditionalFormats().add();
         xcfs.addRange(sheet.getAllocatedRange());
         IConditionalFormat format = xcfs.addCondition();
         format.setFormatType( ConditionalFormatType.ColorScale);
 
-        //save to file.
+        //Save the workbook to the specified output file path in Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

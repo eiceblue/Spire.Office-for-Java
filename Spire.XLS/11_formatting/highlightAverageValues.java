@@ -8,34 +8,39 @@ public class highlightAverageValues {
         String input = "data/Template_Xls_6.xlsx";
         String output = "output/highlightAverageValues.xlsx";
 
-        //create a workbook.
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load the file from disk.
+        // Load the workbook from the input file
         workbook.loadFromFile(input);
 
-        //get the first worksheet.
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //add conditional format1.
+        // Add conditional formats to apply formatting based on conditions
+
+        // Create a new XlsConditionalFormats object
         XlsConditionalFormats format1 = sheet.getConditionalFormats().add();
-        //set the cell range to apply the formatting.
+        // Add the cell range "E2:E10" to the conditional format
         format1.addRange(sheet.getCellRange("E2:E10"));
-        //add below average condition.
+        // Create an average condition of type "Below"
         IConditionalFormat cf1 = format1.addAverageCondition(AverageType.Below);
-        //highlight cells below average values.
+        // Set the background color to blue for cells that meet the average condition
         cf1.setBackColor(Color.BLUE);
 
-        //add conditional format2.
+        // Create another XlsConditionalFormats object
         XlsConditionalFormats format2 = sheet.getConditionalFormats().add();
-        //set the cell range to apply the formatting.
+        // Add the same cell range "E2:E10" to the second conditional format
         format2.addRange(sheet.getCellRange("E2:E10"));
-        //add above average condition.
+        // Create an average condition of type "Above"
         IConditionalFormat cf2 = format1.addAverageCondition(AverageType.Above);
-        //highlight cells above average values.
+        // Set the background color to orange for cells that meet the average condition
         cf2.setBackColor(Color.ORANGE);
 
-        //save to file.
+        // Save the modified workbook to the output file in Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

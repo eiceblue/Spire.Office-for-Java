@@ -2,23 +2,26 @@ import com.spire.xls.*;
 
 public class indentation {
     public static void main(String[] args) {
-        //Create a workbook
+        //Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //Add a new worksheet to the Excel object
+        //Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Access the "B5" cell from the worksheet
+        //Get the CellRange object representing the cell at B5
         CellRange cell = sheet.getCellRange("B5");
 
-        //Add some value to the "B5" cell
+        //Set the text of the cell to "Hello Spire!"
         cell.setText("Hello Spire!");
 
-        //Set the indentation level of the text (inside the cell) to 2
+        //Set the indentation level of the cell's style to 2
         cell.getStyle().setIndentLevel(2);
 
-        //Save to file
         String result = "output/indentation_result.xlsx";
+        //Save the workbook to the specified file in Excel 2010 format
         workbook.saveToFile(result, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

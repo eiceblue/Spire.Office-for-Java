@@ -1,15 +1,13 @@
 import com.spire.presentation.*;
 import com.spire.presentation.drawing.*;
+
 import java.awt.*;
 
 public class bordersAndShading {
     public static void main(String[] args) throws Exception {
-        String inputFile = "data/bordersAndShading.pptx";
-        String outputFile = "output/bordersAndShading_result.pptx";
-
         //Load a PPT document
         Presentation presentation = new Presentation();
-        presentation.loadFromFile(inputFile);
+        presentation.loadFromFile("data/bordersAndShading.pptx");
 
         IAutoShape shape = (IAutoShape)presentation.getSlides().get(0).getShapes().get(0);
 
@@ -33,6 +31,7 @@ public class bordersAndShading {
         shape.getEffectDag().setOuterShadowEffect(shadow);
 
         //Save the document
-        presentation.saveToFile(outputFile, FileFormat.PPTX_2010);
+        String output = "output/bordersAndShading.pptx";
+        presentation.saveToFile(output, FileFormat.PPTX_2013);
     }
 }

@@ -6,21 +6,28 @@ public class clearPivotFields {
         String input = "data/PivotTableExample.xlsx";
         String output = "output/clearPivotFields.xlsx";
 
-        //create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load an excel file including pivot table
+        // Load the workbook from the input file
         workbook.loadFromFile(input);
 
-        //get the sheet in which the pivot table is located
+        // Get the worksheet named "PivotTable"
         Worksheet sheet = workbook.getWorksheets().get("PivotTable");
+
+        // Get the first PivotTable in the worksheet
         XlsPivotTable pt = (XlsPivotTable)sheet.getPivotTables().get(0);
 
-        //clear all the data fields
+        // Clear all data fields in the PivotTable
         pt.getDataFields().clear();
+
+        // Calculate the data in the PivotTable
         pt.calculateData();
 
-        //save to file
+        // Save the workbook to the output file using Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        // Dispose the workbook object to release resources
+        workbook.dispose();
     }
 }

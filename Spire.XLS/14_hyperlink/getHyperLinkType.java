@@ -6,30 +6,45 @@ public class getHyperLinkType {
         String inputFile = "data/hyperlinksSample2.xlsx";
         String outputFile = "output/getHyperLinkType_result.txt";
 
-        //Create a workbook
+        // Create a new workbook object
         Workbook workbook = new Workbook();
 
-        //Load the document from disk
+        // Load the workbook from the input file
         workbook.loadFromFile(inputFile);
 
-        //Get the first worksheet
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Iterate all hyperlinks
-        StringBuilder sb = new StringBuilder();
+        // Create a StringBuilder to store the hyperlink information
+        StringBuilder stringBuilder = new StringBuilder();
+
+        // Iterate over each hyperlink in the worksheet
         for (HyperLink item : (Iterable<HyperLink>) sheet.getHyperLinks()) {
-            //Get hyperlink address
+
+            // Get the address of the hyperlink
             String address = item.getAddress();
-            //Get hyperlink type
+
+            // Get the type of the hyperlink
             HyperLinkType type = item.getType();
-            sb.append("Link address: " + address + "\r\n");
-            sb.append("Link type: " + type.toString() + "\r\n");
+
+            // Append the hyperlink address and type to the StringBuilder
+            stringBuilder.append("Link address: " + address + "\r\n");
+            stringBuilder.append("Link type: " + type.toString() + "\r\n");
         }
 
-        //Write to txt file
-        writeStringToTxt(sb.toString(), outputFile);
-    }
+        // Write the contents of the StringBuilder to a text file
+        writeStringToTxt(stringBuilder.toString(), outputFile);
 
+        // Dispose of the workbook object to release resources
+        workbook.dispose();
+    }
+    /**
+     * Writes a string content to a text file.
+     *
+     * @param content     The content to be written
+     * @param txtFileName The name of the text file
+     * @throws IOException If an I/O error occurs
+     */
     public static void writeStringToTxt(String content, String txtFileName) throws IOException {
         File file = new File(txtFileName);
         if (file.exists()) {

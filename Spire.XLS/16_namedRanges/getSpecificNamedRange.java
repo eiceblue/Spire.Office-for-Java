@@ -1,5 +1,4 @@
 import com.spire.xls.Workbook;
-
 import java.io.*;
 
 public class getSpecificNamedRange {
@@ -7,24 +6,36 @@ public class getSpecificNamedRange {
         String inputFile="data/allNamedRanges.xlsx";
         String outputFile="output/getSpecificNamedRange_result.txt";
 
-        //Create a workbook and load the document from disk
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
+
+        // Load data from the specified inputFile into the workbook
         workbook.loadFromFile(inputFile);
 
-        StringBuilder sb = new StringBuilder();
+        // Create a StringBuilder object to store the results
+        StringBuilder stringBuilder = new StringBuilder();
 
-        //Get specific named range by index
+        // Get the name of the named range at index 1 and append it to the StringBuilder
         String name1 = workbook.getNameRanges().get(1).getName();
-        sb.append("Get the specific named range " + name1 + " by index" + "\r\n");
+        stringBuilder.append("Get the specific named range " + name1 + " by index" + "\r\n");
 
-
-        //Get specific named range by name
+        // Get the name of the named range with the name "NameRange3" and append it to the StringBuilder
         String name2 = workbook.getNameRanges().get("NameRange3").getName();
-        sb.append("Get the specific named range " + name2 + " by name" + "\r\n");
+        stringBuilder.append("Get the specific named range " + name2 + " by name" + "\r\n");
 
-        //Write to txt file
-        writeStringToTxt(sb.toString(),outputFile);
+        // Write the contents of the StringBuilder to a text file using the writeStringToTxt function
+        writeStringToTxt(stringBuilder.toString(), outputFile);
+
+        // Dispose of the workbook object and release any associated resources
+        workbook.dispose();
     }
+    /**
+     * Writes a string content to a text file.
+     *
+     * @param content     The content to be written
+     * @param txtFileName The name of the text file
+     * @throws IOException If an I/O error occurs
+     */
     public static void writeStringToTxt(String content, String txtFileName) throws IOException {
         File file=new File(txtFileName);
         if (file.exists())

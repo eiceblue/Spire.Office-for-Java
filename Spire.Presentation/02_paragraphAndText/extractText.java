@@ -1,14 +1,12 @@
 import com.spire.presentation.*;
-import java.io.FileWriter;
+
+import java.io.*;
 
 public class extractText {
     public static void main(String[] args) throws Exception {
-        String inputFile = "data/extractText.pptx";
-        String outputFile = "output/extractText_result.txt";
-
         //Create a PPT document and load file
         Presentation presentation = new Presentation();
-        presentation.loadFromFile(inputFile);
+        presentation.loadFromFile("data/extractText.pptx");
 
         StringBuilder buffer = new StringBuilder();
 
@@ -20,11 +18,11 @@ public class extractText {
                         buffer.append(((ParagraphEx) tp).getText());
                     }
                 }
-
             }
         }
         //Save text
-        FileWriter writer = new FileWriter(outputFile);
+        String output = "output/extractText.txt";
+        FileWriter writer = new FileWriter(output);
         writer.write(buffer.toString());
         writer.flush();
         writer.close();

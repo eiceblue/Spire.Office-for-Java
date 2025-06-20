@@ -1,7 +1,6 @@
 import com.spire.xls.*;
 import com.spire.xls.core.IConditionalFormat;
 import com.spire.xls.core.spreadsheet.collections.XlsConditionalFormats;
-
 import java.awt.*;
 
 public class conditionalFormatRuntime {
@@ -9,25 +8,36 @@ public class conditionalFormatRuntime {
             String input = "data/ConditionalFormatRuntime.xlsx";
             String output = "output/conditionalFormatRuntime_output.xlsx";
 
-            //load a file from a disk
+            //Create a new workbook
             Workbook workbook = new Workbook();
+
+            //Load a workbook from a file
             workbook.loadFromFile(input);
 
-            //get the first sheet
+            //Get the first worksheet in the workbook
             Worksheet sheet = workbook.getWorksheets().get(0);
+
+            //Add comparison rule 1 to the worksheet
             addComparisonRule1(sheet);
+            //Add comparison rule 2 to the worksheet
             addComparisonRule2(sheet);
+            //Add comparison rule 3 to the worksheet
             addComparisonRule3(sheet);
+            //Add comparison rule 4 to the worksheet
             addComparisonRule4(sheet);
 
-            //save to file
+            //Save the workbook to the specified file with Excel 2013 format
             workbook.saveToFile(output, ExcelVersion.Version2013);
+
+            //Release the resources used by the workbook
+            workbook.dispose();
         }
         private static void addComparisonRule1(Worksheet sheet)
         {
-            //create conditional formatting rule
+            //Add conditional formats to the worksheet for range A1:D1
             XlsConditionalFormats xcfs1 = sheet.getConditionalFormats().add();
             xcfs1.addRange(sheet.getCellRange("A1:D1"));
+            //Add a condition for the conditional format
             IConditionalFormat cf1 = xcfs1.addCondition();
             cf1.setFormatType( ConditionalFormatType.CellValue);
             cf1.setFirstFormula("150");
@@ -37,13 +47,15 @@ public class conditionalFormatRuntime {
         }
         private static void addComparisonRule2(Worksheet sheet)
         {
+            //Add conditional formats to the worksheet for range A2:D2
             XlsConditionalFormats xcfs2 = sheet.getConditionalFormats().add();
             xcfs2.addRange(sheet.getCellRange("A2:D2"));
+            //Add a condition for the conditional format
             IConditionalFormat cf2 = xcfs2.addCondition();
             cf2.setFormatType( ConditionalFormatType.CellValue);
             cf2.setFirstFormula( "500");
             cf2.setOperator( ComparisonOperatorType.Less);
-            //set border color
+            //Set border color
             cf2.setLeftBorderColor(Color.BLUE);
             cf2.setRightBorderColor( Color.BLUE);
             cf2.setTopBorderColor( Color.GREEN);
@@ -56,9 +68,10 @@ public class conditionalFormatRuntime {
 
         private static void addComparisonRule3(Worksheet sheet)
         {
-            //create conditional formatting rule
+            //Add conditional formats to the worksheet for range A3:D3
             XlsConditionalFormats xcfs1 = sheet.getConditionalFormats().add();
             xcfs1.addRange(sheet.getCellRange("A3:D3"));
+            //Add a condition for the conditional format
             IConditionalFormat cf1 = xcfs1.addCondition();
             cf1.setFormatType( ConditionalFormatType.CellValue);
             cf1.setFirstFormula("300");
@@ -69,20 +82,17 @@ public class conditionalFormatRuntime {
 
         private static void addComparisonRule4(Worksheet sheet)
         {
-            //create conditional formatting rule
+            //Add conditional formats to the worksheet for range A4:D4
             XlsConditionalFormats xcfs1 = sheet.getConditionalFormats().add();
             xcfs1.addRange(sheet.getCellRange("A4:D4"));
+            //Add a condition for the conditional format
             IConditionalFormat cf1 = xcfs1.addCondition();
             cf1.setFormatType( ConditionalFormatType.CellValue);
             cf1.setFirstFormula( "100");
             cf1.setSecondFormula( "200");
             cf1.setOperator(ComparisonOperatorType.NotBetween);
-            //set fill pattern type
             cf1.setFillPattern( ExcelPatternType.ReverseDiagonalStripe);
-            //set foreground color
             cf1.setColor( Color.LIGHT_GRAY);
-
-            //set background color
             cf1.setBackColor( Color.BLACK);
         }
 }

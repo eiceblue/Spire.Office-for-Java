@@ -7,10 +7,10 @@ public class applyConditionalFormatting {
     public static void main(String[] args) throws Exception {
         String output = "output/applyConditionalFormatting.xlsx";
 
-        //create a workbook.
+        //Create a new instance of Workbook
         Workbook workbook = new Workbook();
 
-        //get the first worksheet.
+        //Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
         //insert data to cell range from A1 to C4.
@@ -26,10 +26,12 @@ public class applyConditionalFormatting {
         sheet.getCellRange("C2").setNumberValue( 700);
         sheet.getCellRange("C3").setNumberValue(920);
         sheet.getCellRange("C4").setNumberValue( 450);
+
+        //Set the row height and column width for the allocated range in the worksheet
         sheet.getAllocatedRange().setRowHeight(15 );
         sheet.getAllocatedRange().setColumnWidth(17);
 
-        //create conditional formatting rule.
+        //Add the first conditional formatting rule to the worksheet based on cell values
         XlsConditionalFormats xcfs1 = sheet.getConditionalFormats().add();
         xcfs1.addRange(sheet.getAllocatedRange());
         IConditionalFormat format1 = xcfs1.addCondition();
@@ -39,7 +41,7 @@ public class applyConditionalFormatting {
         format1.setFontColor(Color.RED);
         format1.setBackColor( Color.LIGHT_GRAY);
 
-        //create conditional formatting rule.
+        //Add the second conditional formatting rule to the worksheet based on cell values
         XlsConditionalFormats xcfs2 = sheet.getConditionalFormats().add();
         xcfs2.addRange(sheet.getAllocatedRange());
         IConditionalFormat format2 = xcfs1.addCondition();
@@ -49,7 +51,10 @@ public class applyConditionalFormatting {
         format2.setFontColor( Color.GREEN);
         format2.setBackColor(Color.BLUE);
 
-        //save to file.
+        //Specify the output file path for saving the modified workbook
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

@@ -5,25 +5,29 @@ public class colorsAndPalette {
     public static void main(String[] args) throws Exception {
         String output = "output/colorsAndPalette.xlsx";
 
-        //create a workbook
+        //Create a new workbook
         Workbook workbook = new Workbook();
 
-        //adding Orchid color to the palette at 60th index
+        //Change the palette color to Orchid at index 60
         workbook.changePaletteColor(Color.YELLOW, 60);
 
-        //get the first sheet
+        //Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
-
+        //Get the cell range B2
         CellRange cell = sheet.getCellRange("B2");
+        //Set the text in the cell
         cell.setText("Welcome to use Spire.XLS");
 
-        //set the Orchid (custom) color to the font
+        //Set the font color, size, and autofit the columns and rows of the cell
         cell.getStyle().getFont().setColor( Color.YELLOW);
         cell.getStyle().getFont().setSize(20);
         cell.autoFitColumns();
         cell.autoFitRows();
 
-        //save to file
+        //Save the workbook to the specified file with Excel 2010 format
         workbook.saveToFile(output, ExcelVersion.Version2010);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

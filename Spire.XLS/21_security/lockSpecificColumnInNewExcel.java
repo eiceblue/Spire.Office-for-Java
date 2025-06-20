@@ -1,5 +1,4 @@
 import java.util.*;
-
 import com.spire.xls.*;
 
 public class lockSpecificColumnInNewExcel {
@@ -29,5 +28,7 @@ public class lockSpecificColumnInNewExcel {
 
         // Save to file
         workbook.saveToFile(result, ExcelVersion.Version2013);
+
+        workbook.dispose();
     }
 }

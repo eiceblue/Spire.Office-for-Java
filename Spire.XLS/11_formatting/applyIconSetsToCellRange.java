@@ -6,13 +6,13 @@ public class applyIconSetsToCellRange {
     public static void main(String[] args) throws Exception {
         String output = "output/applyIconSetsToCellRange.xlsx";
 
-        //create a workbook.
+        //Create a new workbook
         Workbook workbook = new Workbook();
 
-        //get the first worksheet.
+        //Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //insert data to cell range from A1 to C4.
+        //Set numeric values in cells A1 to C4
         sheet.getCellRange("A1").setNumberValue( 582);
         sheet.getCellRange("A2").setNumberValue( 234);
         sheet.getCellRange("A3").setNumberValue( 314);
@@ -25,17 +25,23 @@ public class applyIconSetsToCellRange {
         sheet.getCellRange("C2").setNumberValue( 700);
         sheet.getCellRange("C3").setNumberValue(920);
         sheet.getCellRange("C4").setNumberValue( 450);
+
+        //Set the row height and column width of the allocated range
         sheet.getAllocatedRange().setRowHeight(15 );
         sheet.getAllocatedRange().setColumnWidth(17);
 
-        //add icon sets.
+        //Add conditional formatting to the worksheet
         XlsConditionalFormats xcfs = sheet.getConditionalFormats().add();
         xcfs.addRange(sheet.getAllocatedRange());
+        //Add a condition for the conditional format
         IConditionalFormat format = xcfs.addCondition();
         format.setFormatType( ConditionalFormatType.IconSet);
         format.getIconSet().setIconSetType( IconSetType.ThreeTrafficLights1);
 
-        //save to file.
+        //Save the workbook to the specified file with Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

@@ -8,19 +8,23 @@ import com.spire.xls.core.spreadsheet.conditionalformatting.TimePeriodType;
 public class variousConditionalFormatting {
 
 	public static void main(String[] args) {
-		
-        //Load the document from disk
+
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
-        //Create a blank sheet
+        // Create an empty sheet in the workbook
         workbook.createEmptySheets(1);
-         //Get the first sheet
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
+        // Add conditional formatting to the new sheet
         AddConditionalFormattingForNewSheet(sheet);
 
         String result = "output/variousConditionalFormatting_result.xlsx";
-        //Save and Launch
+        // Save the workbook to the specified file with Excel 2010 format
         workbook.saveToFile(result, ExcelVersion.Version2010);
-	}
+
+        // Release the resources used by the workbook
+        workbook.dispose();
+    }
 
 	private static void AddConditionalFormattingForNewSheet(Worksheet sheet) {
 		
@@ -86,10 +90,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I19:K20").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I19:K20").getStyle().setColor(Color.green);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.Yesterday);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I19").setValue(DateTime.getNow().addDays(-2).getDate().toString());
         sheet.getCellRange("J19").setValue(DateTime.getNow().addDays(-1).getDate().toString());
         sheet.getCellRange("K19").setValue(DateTime.getNow().getDate().toString());
@@ -106,10 +108,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I17:K18").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I17:K18").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.Tomorrow);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I17").setValue(DateTime.getNow().addDays(-2).getDate().toString());
         sheet.getCellRange("J17").setValue(DateTime.getNow().addDays(-1).getDate().toString());
         sheet.getCellRange("K17").setValue(DateTime.getNow().getDate().toString());
@@ -126,10 +126,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I15:K16").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I15:K16").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.ThisWeek);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I15").setValue(DateTime.getNow().addDays(-2).getDate().toString());
         sheet.getCellRange("J15").setValue(DateTime.getNow().addDays(-1).getDate().toString());
         sheet.getCellRange("K15").setValue(DateTime.getNow().getDate().toString());
@@ -146,10 +144,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I13:K14").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I13:K14").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.ThisMonth);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I13").setValue(DateTime.getNow().addMonths(-1).getDate().toString());
         sheet.getCellRange("J13").setValue(DateTime.getNow().addDays(-1).getDate().toString());
         sheet.getCellRange("K13").setValue(DateTime.getNow().getDate().toString());
@@ -166,10 +162,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I11:K12").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I11:K12").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.NextWeek);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I11").setValue(DateTime.getNow().addDays(-3).getDate().toString());
         sheet.getCellRange("J11").setValue(DateTime.getNow().addDays(-2).getDate().toString());
         sheet.getCellRange("K11").setValue(DateTime.getNow().getDate().toString());
@@ -186,10 +180,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I9:K10").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I9:K10").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.NextMonth);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I9").setValue(DateTime.getNow().addDays(-3).getDate().toString());
         sheet.getCellRange("J9").setValue(DateTime.getNow().addMonths(-1).getDate().toString());
         sheet.getCellRange("K9").setValue(DateTime.getNow().getDate().toString());
@@ -206,10 +198,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I7:K8").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I7:K8").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.LastWeek);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I7").setValue(DateTime.getNow().addDays(-6).getDate().toString());
         sheet.getCellRange("J7").setValue(DateTime.getNow().addDays(-5).getDate().toString());
         sheet.getCellRange("K7").setValue(DateTime.getNow().getDate().toString());
@@ -226,10 +216,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I5:K6").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I5:K6").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.LastMonth);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I5").setValue(DateTime.getNow().addDays(-6).getDate().toString());
         sheet.getCellRange("J5").setValue(DateTime.getNow().addMonths(-1).getDate().toString());
         sheet.getCellRange("K5").setValue(DateTime.getNow().getDate().toString());
@@ -245,10 +233,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I3:K4").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I3:K4").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.Last7Days);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I3").setValue(DateTime.getNow().addDays(-8).getDate().toString());
         sheet.getCellRange("J3").setValue(DateTime.getNow().addDays(-7).getDate().toString());
         sheet.getCellRange("K3").setValue(DateTime.getNow().getDate().toString());
@@ -264,10 +250,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("I1:K2").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("I1:K2").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addTimePeriodCondition(TimePeriodType.Today);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("I1").setValue(DateTime.getNow().addDays(-8).getDate().toString());
         sheet.getCellRange("J1").setValue(DateTime.getNow().addDays(-7).getDate().toString());
         sheet.getCellRange("K1").setValue(DateTime.getNow().getDate().toString());
@@ -283,10 +267,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E21:G22").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E21:G22").getStyle().setColor(Color.orange);
         IConditionalFormat cf = conds.addUniqueValuesCondition();
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("E21").setText("aa");
         sheet.getCellRange("F21").setText("bb");
         sheet.getCellRange("G21").setText("aa");
@@ -302,10 +284,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E19:G20").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E19:G20").getStyle().setColor(Color.green);
         IConditionalFormat cf = conds.addNotContainsErrorsCondition();
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("E19").setText("aa");
         sheet.getCellRange("F19").setText("=Sum");
         sheet.getCellRange("G19").setText("aa");
@@ -321,10 +301,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E23:G24").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E23:G24").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addDuplicateValuesCondition();
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("E23").setText("aa");
         sheet.getCellRange("F23").setText("bb");
         sheet.getCellRange("G23").setText("aa");
@@ -340,10 +318,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E17:G18").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E17:G18").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addContainsErrorsCondition();
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("E17").setText("aa");
         sheet.getCellRange("F17").setText("=Sum");
         sheet.getCellRange("G17").setText("aa");
@@ -359,10 +335,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E13:G14").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E13:G14").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addEndsWithCondition("ab");
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("E13").setText("aa");
         sheet.getCellRange("F13").setText("abc");
         sheet.getCellRange("G13").setText("aab");
@@ -378,10 +352,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E15:G16").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E15:G16").getStyle().setColor(Color.yellow);
         IConditionalFormat cf = conds.addBeginsWithCondition("ab");
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("E15").setText("aa");
         sheet.getCellRange("F15").setText("abc");
         sheet.getCellRange("G15").setText("aa");
@@ -398,10 +370,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E11:G12").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E11:G12").getStyle().setColor(Color.orange);
         IConditionalFormat cf = conds.addNotContainsBlanksCondition();
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("E11").setText("aa");
         sheet.getCellRange("F11").setText("    ");
         sheet.getCellRange("G11").setText("aab");
@@ -418,10 +388,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E9:G10").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E9:G10").getStyle().setColor(Color.cyan);
         IConditionalFormat cf = conds.addContainsBlanksCondition();
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("E9").setText("aa");
         sheet.getCellRange("F9").setText("    ");
         sheet.getCellRange("G9").setText("aab");
@@ -438,10 +406,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E7:G8").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E7:G8").getStyle().setColor(Color.green);
         IConditionalFormat cf = conds.addNotContainsTextCondition("abc");
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("E7").setText("aa");
         sheet.getCellRange("F7").setText("abfd");
         sheet.getCellRange("G7").setText("aab");
@@ -457,13 +423,11 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E3:G4").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E3:G4").getStyle().setColor(Color.green);
         IConditionalFormat cf = xcfs.addCondition();
-        
         cf.setFormatType(ConditionalFormatType.DataBar);
         cf.getDataBar().setBarColor(Color.orange);
         cf.getDataBar().getMinPoint().setType(ConditionValueType.Percentile);;
         cf.getDataBar().getMinPoint().setValue(30.78);
         cf.getDataBar().setShowValue(false);
-        
         sheet.getCellRange("E3").setNumberValue(6);
         sheet.getCellRange("F3").setNumberValue(9);
         sheet.getCellRange("G3").setNumberValue(12);
@@ -479,10 +443,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E5:G6").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E5:G6").getStyle().setColor(Color.blue);
         IConditionalFormat cf = conds.addContainsTextCondition("abc");
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("E5").setText("aa");
         sheet.getCellRange("F5").setText("abfd");
         sheet.getCellRange("G5").setText("aab");
@@ -498,10 +460,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A29:C32").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A29:C32").getStyle().setColor(Color.yellow);
         IConditionalFormat cf = conds.addTopBottomCondition(TopBottomType.BottomPercent, 10);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.green);
-        
         sheet.getCellRange("A29").setNumberValue(22);
         sheet.getCellRange("B29").setNumberValue(33);
         sheet.getCellRange("C29").setNumberValue(38);
@@ -524,12 +484,10 @@ public class variousConditionalFormatting {
         sheet.getCellRange("E1:G2").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("E1:G2").getStyle().setColor(Color.green);
         IConditionalFormat cf = xcfs.addCondition();
-        
         cf.setFormatType(ConditionalFormatType.DataBar);
         cf.getDataBar().setBarColor(Color.blue);
         cf.getDataBar().getMinPoint().setType(ConditionValueType.Percent);;
         cf.getDataBar().setShowValue(true);
-        
         sheet.getCellRange("E1").setNumberValue(4);
         sheet.getCellRange("F1").setNumberValue(7);
         sheet.getCellRange("G1").setNumberValue(10);
@@ -545,10 +503,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A25:C28").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A25:C28").getStyle().setColor(Color.orange);
         IConditionalFormat cf = conds.addTopBottomCondition(TopBottomType.TopPercent, 10);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.blue);
-        
         sheet.getCellRange("A25").setNumberValue(24);
         sheet.getCellRange("B25").setNumberValue(29);
         sheet.getCellRange("C25").setNumberValue(34);
@@ -570,10 +526,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A21:C24").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A21:C24").getStyle().setColor(Color.green);
         IConditionalFormat cf = conds.addTopBottomCondition(TopBottomType.Bottom, 10);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("A21").setNumberValue(20);
         sheet.getCellRange("B21").setNumberValue(25);
         sheet.getCellRange("C21").setNumberValue(30);
@@ -595,10 +549,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A17:C20").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A17:C20").getStyle().setColor(Color.gray);
         IConditionalFormat cf = conds.addTopBottomCondition(TopBottomType.Top, 10);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.yellow);
-        
         sheet.getCellRange("A17").setNumberValue(16);
         sheet.getCellRange("B17").setNumberValue(21);
         sheet.getCellRange("C17").setNumberValue(26);
@@ -620,10 +572,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A15:C16").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A15:C16").getStyle().setColor(Color.pink);
         IConditionalFormat cf = conds.addAverageCondition(AverageType.AboveStdDev3);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.blue);
-        
         sheet.getCellRange("A15").setNumberValue(12);
         sheet.getCellRange("B15").setNumberValue(15);
         sheet.getCellRange("C15").setNumberValue(18);
@@ -639,10 +589,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A13:C14").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A13:C14").getStyle().setColor(Color.pink);
         IConditionalFormat cf = conds.addAverageCondition(AverageType.BelowEqual);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.blue);
-        
         sheet.getCellRange("A13").setNumberValue(12);
         sheet.getCellRange("B13").setNumberValue(15);
         sheet.getCellRange("C13").setNumberValue(18);
@@ -658,10 +606,8 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A11:C12").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A11:C12").getStyle().setColor(Color.red);
         IConditionalFormat cf = conds.addAverageCondition(AverageType.Above);
-        
         cf.setFillPattern(ExcelPatternType.Solid);
         cf.setBackColor(Color.pink);
-        
         sheet.getCellRange("A11").setNumberValue(10);
         sheet.getCellRange("B11").setNumberValue(13);
         sheet.getCellRange("C11").setNumberValue(16);
@@ -678,11 +624,9 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A9:C10").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A9:C10").getStyle().setColor(Color.white);
         IConditionalFormat cf = xcfs.addCondition();
-        
         cf.setFormatType(ConditionalFormatType.ColorScale);
         cf.getColorScale().setMinColor(Color.yellow);
         cf.getColorScale().setMaxColor(Color.blue);
-        
         sheet.getCellRange("A9").setNumberValue(8);
         sheet.getCellRange("B9").setNumberValue(12);
         sheet.getCellRange("C9").setNumberValue(13);
@@ -699,12 +643,10 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A7:C8").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A7:C8").getStyle().setColor(Color.green);
         IConditionalFormat cf = xcfs.addCondition();
-        
         cf.setFormatType(ConditionalFormatType.ColorScale);
         cf.getColorScale().getMinValue().setType(ConditionValueType.Number);
         cf.getColorScale().getMinValue().setValue(9);
         cf.getColorScale().setMinColor(Color.pink);
-        
         sheet.getCellRange("A7").setNumberValue(6);
         sheet.getCellRange("B7").setNumberValue(9);
         sheet.getCellRange("C7").setNumberValue(12);
@@ -721,7 +663,6 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A5:C6").getStyle().setColor(Color.pink);
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.ColorScale);
-        
         sheet.getCellRange("A5").setNumberValue(4);
         sheet.getCellRange("B5").setNumberValue(7);
         sheet.getCellRange("C5").setNumberValue(10);
@@ -739,7 +680,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FourTrafficLights);
-        
         sheet.getCellRange("M33").setText("FourTrafficLights");
         sheet.getCellRange("N33").setNumberValue(48);
         sheet.getCellRange("O33").setNumberValue(52);
@@ -760,7 +700,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeTrafficLights2);
-        
         sheet.getCellRange("M31").setText("ThreeTrafficLights2");
         sheet.getCellRange("N31").setNumberValue(45);
         sheet.getCellRange("O31").setNumberValue(48);
@@ -778,7 +717,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeTrafficLights1);
-        
         sheet.getCellRange("M29").setText("ThreeTrafficLights1");
         sheet.getCellRange("N29").setNumberValue(43);
         sheet.getCellRange("O29").setNumberValue(46);
@@ -796,7 +734,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeSymbols2);
-        
         sheet.getCellRange("M27").setText("ThreeSymbols2");
         sheet.getCellRange("N27").setNumberValue(41);
         sheet.getCellRange("O27").setNumberValue(44);
@@ -814,7 +751,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeSymbols);
-        
         sheet.getCellRange("M25").setText("ThreeSymbols");
         sheet.getCellRange("N25").setNumberValue(39);
         sheet.getCellRange("O25").setNumberValue(42);
@@ -832,7 +768,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeSigns);
-        
         sheet.getCellRange("M23").setText("ThreeSigns");
         sheet.getCellRange("N23").setNumberValue(37);
         sheet.getCellRange("O23").setNumberValue(40);
@@ -850,7 +785,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FourRedToBlack);
-        
         sheet.getCellRange("M21").setText("FourRedToBlack");
         sheet.getCellRange("N21").setNumberValue(35);
         sheet.getCellRange("O21").setNumberValue(38);
@@ -868,7 +802,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FiveRating);
-        
         sheet.getCellRange("M19").setText("FiveRating");
         sheet.getCellRange("N19").setNumberValue(33);
         sheet.getCellRange("O19").setNumberValue(36);
@@ -886,7 +819,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FourRating);
-        
         sheet.getCellRange("M17").setText("FourRating");
         sheet.getCellRange("N17").setNumberValue(31);
         sheet.getCellRange("O17").setNumberValue(34);
@@ -905,7 +837,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FiveQuarters);
-        
         sheet.getCellRange("M15").setText("FiveQuarters");
         sheet.getCellRange("N15").setNumberValue(29);
         sheet.getCellRange("O15").setNumberValue(32);
@@ -923,7 +854,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeFlags);
-        
         sheet.getCellRange("M13").setText("ThreeFlags");
         sheet.getCellRange("N13").setNumberValue(27);
         sheet.getCellRange("O13").setNumberValue(30);
@@ -941,7 +871,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FiveArrowsGray);
-        
         sheet.getCellRange("M11").setText("FiveErrowsGray");
         sheet.getCellRange("N11").setNumberValue(25);
         sheet.getCellRange("O11").setNumberValue(28);
@@ -960,7 +889,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FiveArrowsGray);
-        
         sheet.getCellRange("M9").setText("FourErrowsGray");
         sheet.getCellRange("N9").setNumberValue(23);
         sheet.getCellRange("O9").setNumberValue(26);
@@ -978,7 +906,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeArrowsGray);
-        
         sheet.getCellRange("M7").setText("ThreeErrowsGray");
         sheet.getCellRange("N7").setNumberValue(21);
         sheet.getCellRange("O7").setNumberValue(24);
@@ -997,7 +924,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FiveArrows);
-        
         sheet.getCellRange("M5").setText("FiveErrows");
         sheet.getCellRange("N5").setNumberValue(17);
         sheet.getCellRange("O5").setNumberValue(20);
@@ -1017,7 +943,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.FourArrows);
-        
         sheet.getCellRange("M3").setText("FourErrows");
         sheet.getCellRange("N3").setNumberValue(17);
         sheet.getCellRange("O3").setNumberValue(20);
@@ -1037,7 +962,6 @@ public class variousConditionalFormatting {
         IConditionalFormat cf = xcfs.addCondition();
         cf.setFormatType(ConditionalFormatType.IconSet);
         cf.getIconSet().setIconSetType(IconSetType.ThreeArrows);
-        
         sheet.getCellRange("M1").setText("ThreeErrows");
         sheet.getCellRange("N1").setNumberValue(15);
         sheet.getCellRange("O1").setNumberValue(18);
@@ -1055,9 +979,7 @@ public class variousConditionalFormatting {
         sheet.getCellRange("A1:C2").getStyle().setFillPattern(ExcelPatternType.Solid);
         sheet.getCellRange("A1:C2").getStyle().setColor(Color.yellow);
         IConditionalFormat cf = xcfs.addCondition();
-        
         cf.setFormatType(ConditionalFormatType.IconSet);
-        
         sheet.getCellRange("A1").setNumberValue(0);
         sheet.getCellRange("B1").setNumberValue(3);
         sheet.getCellRange("C1").setNumberValue(6);

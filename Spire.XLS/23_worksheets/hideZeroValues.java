@@ -5,19 +5,22 @@ public class hideZeroValues {
         String input = "data/sampleB_2.xlsx";
         String output = "output/hideZeroValues.xlsx";
 
-        //create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load the document from disk
+        // Load the Excel file from the specified input path
         workbook.loadFromFile(input);
 
-        //get the first sheet
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //set false to hide the zero values in sheet
+        // Set the display of zeros in the worksheet to false
         sheet.isDisplayZeros(false);
 
-        //save the file
+        // Save the modified workbook to the specified output path in Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        // Dispose the workbook to release resources
+        workbook.dispose();
     }
 }

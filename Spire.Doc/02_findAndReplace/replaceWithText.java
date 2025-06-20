@@ -2,16 +2,19 @@ import com.spire.doc.*;
 
 public class replaceWithText {
     public static void main(String[] args) {
-        String input = "data/replaceWithText.docx";
-        String output = "output/replaceWithText.docx";
-        //load Word document
+        //Create word document.
         Document document = new Document();
-        document.loadFromFile(input, FileFormat.Docx);
 
-        //replace the text
-        document.replace("Word", "ReplacedText", false, true);
+        // Load the document from disk.
+        document.loadFromFile("data/Sample.docx");
 
-        //save the document
-        document.saveToFile(output,FileFormat.Docx);
+        // Replace text
+        document.replace("word", "ReplacedText", false, true);
+
+        // Save doc file.
+        document.saveToFile("output/replaceWithText.docx", FileFormat.Docx);
+
+        //Dispose the document
+        document.dispose();
     }
 }

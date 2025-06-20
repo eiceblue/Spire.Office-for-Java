@@ -1,0 +1,1 @@
+Spire.PDF for Java is a PDF API that enables Java applications to read, write and save PDF documents without using Adobe Acrobat. Using this Java PDF component, developers and programmers can implement rich capabilities to create PDF files from scratch or process existing PDF documents entirely on Java applications (J2SE and J2EE).

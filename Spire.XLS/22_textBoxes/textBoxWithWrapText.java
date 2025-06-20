@@ -6,22 +6,25 @@ public class textBoxWithWrapText {
         String input = "data/TextBoxSampleB.xlsx";
         String output = "output/textBoxWithWrapText.xlsx";
 
-        //create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load the document from disk
+        // Load an existing Excel file from the specified input path
         workbook.loadFromFile(input);
 
-        //get the first worksheet
+        // Get the first Worksheet from the Workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //get the text box
-        XlsTextBoxShape shape = (XlsTextBoxShape)sheet.getTextBoxes().get(0);
+        // Get the TextBox shape at index 0 from the Worksheet
+        XlsTextBoxShape shape = (XlsTextBoxShape) sheet.getTextBoxes().get(0);
 
-        //set wrap text
+        // Enable text wrapping for the TextBox shape
         shape.isWrapText(true);
 
-        //save the document
+        // Save the modified Workbook to a new file in Excel 2013 format with the specified output path
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        // Dispose the Workbook object
+        workbook.dispose();
     }
 }

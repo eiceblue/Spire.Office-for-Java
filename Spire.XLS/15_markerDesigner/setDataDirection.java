@@ -6,34 +6,46 @@ public class setDataDirection {
         String input = "data/MarkerDesigner.xlsx";
         String output = "output/setDataDirection.xlsx";
 
-        //create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load the document from disk
+        // Load an existing workbook from the specified input file
         workbook.loadFromFile(input);
 
-        //create a DataTable
+        // Create a new DataTable object
         DataTable dt = new DataTable();
+
+        // Set the table name of the DataTable as "data"
         dt.setTableName("data");
-        //define a field in it
+
+        // Create a new DataColumn with the column name "value" and add it to the DataTable's columns collection
         dt.getColumns().add(new DataColumn("value"));
 
-        //add three rows to it
+        // Create three new DataRow objects for the DataTable
         DataRow drName1 = dt.newRow();
         DataRow drName2 = dt.newRow();
         DataRow drName3 = dt.newRow();
-        drName1.setString("value","Text1");
-        drName2.setString("value","Text2");
-        drName3.setString("value","Text3");
+
+        // Set the value of the "value" column in each DataRow
+        drName1.setString("value", "Text1");
+        drName2.setString("value", "Text2");
+        drName3.setString("value", "Text3");
+
+        // Add the DataRows to the DataTable's rows collection
         dt.getRows().add(drName1);
         dt.getRows().add(drName2);
         dt.getRows().add(drName3);
 
-        //fill DataTable
+        // Add the DataTable to the MarkerDesigner in the workbook
         workbook.getMarkerDesigner().addDataTable("data", dt);
+
+        // Apply the marker design to the workbook
         workbook.getMarkerDesigner().apply();
 
-        //save the document
+        // Save the workbook to the specified output file path using Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        // Clean up and release resources used by the workbook
+        workbook.dispose();
     }
 }

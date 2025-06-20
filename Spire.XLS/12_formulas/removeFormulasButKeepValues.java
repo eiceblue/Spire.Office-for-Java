@@ -5,29 +5,37 @@ public class removeFormulasButKeepValues {
         String inputFile = "data/removeFormulasButKeepValues.xlsx";
         String outputFile="output/removeFormulasButKeepValues_result.xlsx";
 
-        //Create a workbook.
+        // Create a new workbook object
         Workbook workbook = new Workbook();
 
-        //Load the file from disk.
+        // Load the workbook from an input file
         workbook.loadFromFile(inputFile);
 
-        //Loop through worksheets.
+        // Iterate over each worksheet in the workbook
         for (Worksheet sheet : (Iterable<Worksheet>) workbook.getWorksheets())
         {
-            //Loop through cells.
+            // Iterate over each cell range in the worksheet
             for (CellRange cell : (Iterable<CellRange>) sheet.getRange())
             {
-                //If the cell contain formula, get the formula value, clear cell content, and then fill the formula value into the cell.
+                // Check if the cell contains a formula
                 if (cell.hasFormula())
                 {
+                    // Get the value of the formula
                     Object value = cell.getFormulaValue();
+
+                    // Clear the cell's content
                     cell.clear(ExcelClearOptions.ClearContent);
+
+                    // Set the cell's value to the string representation of the formula value
                     cell.setValue(value.toString());
                 }
             }
         }
 
-        //Save to file
+        // Save the modified workbook to an output file in Excel 2013 format
         workbook.saveToFile(outputFile, ExcelVersion.Version2013);
+
+        // Release resources used by the workbook
+        workbook.dispose();
     }
 }

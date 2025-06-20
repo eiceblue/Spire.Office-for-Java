@@ -5,22 +5,25 @@ public class hideFormulas {
         String input = "data/FormulasSample.xlsx";
         String output = "output/hideFormulas.xlsx";
 
-        //create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load the document from disk
+        // Load the workbook from the input file
         workbook.loadFromFile(input);
 
-        //get the first worksheet
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //hide the formulas in the used range
+        // Hide formulas in the allocated range of the worksheet
         sheet.getAllocatedRange().isFormulaHidden(true);
 
-        //protect the worksheet with password
+        // Protect the worksheet with a password "e-iceblue"
         sheet.protect("e-iceblue");
 
-        //save the document
+        // Save the modified workbook to the output file in Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        // Dispose of the workbook object to release resources
+        workbook.dispose();
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class toSVG {
     public static void main(String[] args) throws Exception{
-        String inputFile ="data/toSVG.pptx";
+        String inputFile ="data/OneSlideToSVG.pptx";
         String outputFile="output/";
         Presentation ppt = new Presentation();
         ppt.loadFromFile(inputFile);

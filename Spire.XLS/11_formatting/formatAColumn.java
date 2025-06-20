@@ -5,38 +5,40 @@ public class formatAColumn {
     public static void main(String[] args) throws Exception {
         String output = "output/formatAColumn.xlsx";
 
-        //create a workbook
+        //Create a new workbook
         Workbook workbook = new Workbook();
 
-        //get the first sheet
+        //Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //create a new style
+        //Add a new cell style named "newStyle"
         CellStyle style = workbook.getStyles().addStyle("newStyle");
 
-        //set the vertical alignment of the text
+        //Set the vertical alignment of the style to center
         style.setVerticalAlignment( VerticalAlignType.Center);
 
-        //set the horizontal alignment of the text
+        //Set the horizontal alignment of the style to center
         style.setHorizontalAlignment( HorizontalAlignType.Center);
 
-        //set the font color of the text
+        //Set the font color of the style to blue
         style.getFont().setColor( Color.BLUE);
 
-        //shrink the text to fit in the cell
+        //Enable the "shrink to fit" option for the style
         style.setShrinkToFit(true);
 
-        //set the bottom border color of the cell to OrangeRed
+        //Set the bottom border color and style of the style
         style.getBorders().getByBordersLineType(BordersLineType.EdgeBottom).setColor( Color.ORANGE);
-
-        //Set the bottom border type of the cell to Dotted
         style.getBorders().getByBordersLineType(BordersLineType.EdgeBottom).setLineStyle( LineStyleType.Dotted);
 
-        //apply the style to the first column
+        //Apply the "newStyle" cell style to all cells in column 0
         sheet.getColumns()[0].setCellStyleName(style.getName());
+        //Set the text of all cells in column 0 to "Test"
         sheet.getColumns()[0].setText( "Test");
 
-        //save to file
+        //Save the modified workbook to a new file named "formatAColumn.xlsx" using Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

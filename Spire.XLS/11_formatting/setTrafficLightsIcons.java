@@ -6,13 +6,13 @@ import java.awt.*;
 
 public class setTrafficLightsIcons {
     public static void main(String[] args) {
-        //Create a workbook.
+        // Create a new workbook
         Workbook workbook = new Workbook();
 
-        //Add a worksheet.
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Add some data to the Excel sheet cell range and set the format for them.
+        // Set text and number formats for cells A1 to A7
         sheet.getCellRange("A1").setText("Traffic Lights");
         sheet.getCellRange("A2").setNumberValue(0.95);
         sheet.getCellRange("A2").setNumberFormat("0%");
@@ -27,30 +27,34 @@ public class setTrafficLightsIcons {
         sheet.getCellRange("A7").setNumberValue(0.6);
         sheet.getCellRange("A7").setNumberFormat("0%");
 
-        //Set the height of row and width of column for Excel cell range.
+        // Set row height and column width for the allocated range of cells
         sheet.getAllocatedRange().setRowHeight(20);
         sheet.getAllocatedRange().setColumnWidth(25);
 
-        //Add a conditional formatting.
+        // Add conditional formatting to the allocated range of cells
         XlsConditionalFormats conditional = sheet.getConditionalFormats().add();
         conditional.addRange(sheet.getAllocatedRange());
-        IConditionalFormat format1 = conditional.addCondition();
 
-        //Add a conditional formatting of cell range and set its type to CellValue.
+        // Add a condition for comparing cell values
+        IConditionalFormat format1 = conditional.addCondition();
         format1.setFormatType(ConditionalFormatType.CellValue);
         format1.setFirstFormula("300");
         format1.setOperator(ComparisonOperatorType.Less);
         format1.setFontColor(Color.black);
         format1.setBackColor(Color.lightGray);
 
-        //Add a conditional formatting of cell range and set its type to IconSet.
-        conditional.addRange(sheet.getAllocatedRange());
+        // Add another condition for applying traffic lights icons
         IConditionalFormat format = conditional.addCondition();
         format.setFormatType(ConditionalFormatType.IconSet);
         format.getIconSet().setIconSetType(IconSetType.ThreeTrafficLights1);
 
-        //Save to file.
+        // Specify the output file path
         String result = "output/setTrafficLightsIcons_result.xlsx";
+
+        // Save the workbook to the specified file path in Excel 2013 format
         workbook.saveToFile(result, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

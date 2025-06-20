@@ -1,16 +1,14 @@
 import com.spire.presentation.*;
-import com.spire.presentation.collections.ParagraphCollection;
-import com.spire.presentation.drawing.FillFormatType;
+import com.spire.presentation.collections.*;
+import com.spire.presentation.drawing.*;
+
 import java.awt.*;
 
 public class changeTextStyle {
     public static void main(String[] args) throws Exception {
-        String inputFile = "data/changeTextStyle.pptx";
-        String outputFile = "output/changeTextStyle_result.pptx";
-
         //Load a PPT document
         Presentation presentation = new Presentation();
-        presentation.loadFromFile(inputFile);
+        presentation.loadFromFile("data/changeTextStyle.pptx");
 
         IAutoShape shape = (IAutoShape) presentation.getSlides().get(0).getShapes().get(0);
         ParagraphCollection paras = shape.getTextFrame().getParagraphs();
@@ -20,7 +18,7 @@ public class changeTextStyle {
         int max = para1.getTextRanges().getCount();
         for (int i = 0; i < max; i++) {
             para1.getTextRanges().get(i).getFill().setFillType(FillFormatType.SOLID);
-            para1.getTextRanges().get(i).getFill().getSolidColor().setColor(Color.green);
+            para1.getTextRanges().get(i).getFill().getSolidColor().setColor(Color.GREEN);
             para1.getTextRanges().get(i).setLatinFont(new TextFont("Lucida Sans Unicode"));
             para1.getTextRanges().get(i).setFontHeight(14);
         }
@@ -37,6 +35,7 @@ public class changeTextStyle {
         }
 
         //Save the document
-        presentation.saveToFile(outputFile, FileFormat.PPTX_2007);
+        String output = "output/changeTextStyle.pptx";
+        presentation.saveToFile(output, FileFormat.PPTX_2013);
     }
 }

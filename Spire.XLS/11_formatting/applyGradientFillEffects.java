@@ -5,31 +5,41 @@ public class applyGradientFillEffects {
     public static void main(String[] args) throws Exception {
         String output = "output/applyGradientFillEffects.xlsx";
 
-        //create a workbook
+        //Create a new Workbook object
         Workbook workbook = new Workbook();
+
+        //Set the Excel version to 2010
         workbook.setVersion(ExcelVersion.Version2010);
 
-        //get the first sheet
+        //Get the first Worksheet from the Workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //get "B5" cell
+        //Get the CellRange object for cell B5
         CellRange range =sheet.getCellRange("B5");
 
-        //set row height and column width
+        //Set the row height of the range to 50
         range.setRowHeight(50);
+        //Set the column width of the range to 30
         range.setColumnWidth(30);
+        //Set the text in the range to "Hello"
         range.setText( "Hello");
 
-        //set alignment style
+        //Set the horizontal alignment of the range to center
         range.getStyle().setHorizontalAlignment( HorizontalAlignType.Center);
 
-        //set gradient filling effects
+        //Set the fill pattern of the range to Gradient
         range.getStyle().getInterior().setFillPattern( ExcelPatternType.Gradient);
+        //Set the fore color of the gradient
         range.getStyle().getInterior().getGradient().setForeColor(Color.CYAN);
+        //Set the back color of the gradient
         range.getStyle().getInterior().getGradient().setBackColor( Color.BLUE);
+        //Apply a two-color horizontal gradient shading effect to the gradient
         range.getStyle().getInterior().getGradient().twoColorGradient(GradientStyleType.Horizontal, GradientVariantsType.ShadingVariants1);
 
-        //save to file
-        workbook.saveToFile(output, ExcelVersion.Version2013);
+        //Save the workbook to the specified file with Excel 2010 format
+        workbook.saveToFile(output, ExcelVersion.Version2010);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

@@ -1,22 +1,24 @@
 import com.spire.doc.*;
-import com.spire.doc.documents.Paragraph;
+import com.spire.doc.documents.*;
 
 public class helloWorld {
     public static void main(String[] args) {
-        String output = "output/helloWorld.docx";
-        //create Word document
-        Document document = new Document();
+        //Create word document.
+        Document document =new Document();
 
-        //create a new section
+        //Add a new section.
         Section section = document.addSection();
 
-        //create a new paragraph
+        //Add a new paragraph.
         Paragraph paragraph = section.addParagraph();
 
-        //append text
+        //Append Text.
         paragraph.appendText("Hello World!");
 
-        //save the file
-        document.saveToFile(output, FileFormat.Docx);
+        //Save to file.
+        document.saveToFile("output/helloWorld.docx", FileFormat.Docx);
+
+        //Dispose the document
+        document.dispose();
     }
 }

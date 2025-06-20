@@ -2,10 +2,10 @@ import com.spire.xls.*;
 
 public class detectProtection {
     public static void main(String[] args) {
-        // Load the document from disk
+        // Load the input Excel file into the Workbook
         String input = "data/protectedWorkbook.xlsx";
         // Detect if the Excel workbook is password protected
-        boolean value = Workbook.bookIsPasswordProtected(input);
+        boolean value = Workbook.isPasswordProtected(input);
 
         if (value) {
             System.out.println("This excel workbook is password protected.");

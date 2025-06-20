@@ -6,20 +6,25 @@ public class mergeNamedRangeCells {
         String inputFile="data/allNamedRanges.xlsx";
         String outputFile="output/mergeNamedRangeCells_result.xlsx";
 
-        //Create a workbook and load the document from disk
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
+
+        // Load an Excel file from the specified input file path
         workbook.loadFromFile(inputFile);
 
-        //Get specific named range by index
-        INamedRange NamedRange = workbook.getNameRanges().get(0);
+        // Get the first named range from the workbook's collection of named ranges
+        INamedRange namedRange = workbook.getNameRanges().get(0);
 
-        //Get the range of the named range
-        IXLSRange range = NamedRange.getRefersToRange();
+        // Get the range referred to by the named range
+        IXLSRange range = namedRange.getRefersToRange();
 
-        //Merge cells
+        // Merge the cells within the range
         range.merge();
 
-        //Save the file
+        // Save the modified workbook to the specified output file path in Excel 2010 format
         workbook.saveToFile(outputFile, ExcelVersion.Version2010);
+
+        // Release any resources used by the workbook
+        workbook.dispose();
     }
 }

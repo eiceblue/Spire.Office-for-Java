@@ -5,38 +5,43 @@ public class formatARow {
     public static void main(String[] args) throws Exception {
         String output = "output/formatARow.xlsx";
 
-        //create a workbook
+        //Create a new workbook object
         Workbook workbook = new Workbook();
 
-        //get the first sheet
+        //Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //create a new style
+        //Add a new cell style named "newStyle"
         CellStyle style = workbook.getStyles().addStyle("newStyle");
 
-        //set the vertical alignment of the text
+        //Set the vertical alignment of the style to center
         style.setVerticalAlignment( VerticalAlignType.Center);
 
-        //set the horizontal alignment of the text
+        //Set the horizontal alignment of the style to center
         style.setHorizontalAlignment(HorizontalAlignType.Center);
 
-        //set the font color of the text
+        //Set the font color of the style to blue
         style.getFont().setColor(Color.BLUE);
 
-        //shrink the text to fit in the cell
+        //Enable the "shrink to fit" option for the style
         style.setShrinkToFit(true);
 
-        //set the bottom border color of the cell to OrangeRed
+        //Set the bottom border color of the style to orange
         style.getBorders().getByBordersLineType(BordersLineType.EdgeBottom).setColor(Color.ORANGE);
 
-        //set the bottom border type of the cell to Dotted
+        //Set the line style of the bottom border of the style to dotted
         style.getBorders().getByBordersLineType(BordersLineType.EdgeBottom).setLineStyle( LineStyleType.Dotted);
 
-        //apply the style to the second row
+        //Apply the "newStyle" cell style to all cells in row 1
         sheet.getRows()[1].setCellStyleName( style.getName());
+
+        //Set the text of all cells in row 1 to "Test"
         sheet.getRows()[1].setText( "Test");
 
-        //Save to file
+        //Save the modified workbook to the specified file in Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

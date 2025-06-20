@@ -5,17 +5,21 @@ public class applyBuiltInStyles {
         String input = "data/SampleB_2.xlsx";
         String output = "output/applyBuiltInStyles.xlsx";
 
-        //load the document from disk
+        //Create a new instance of Workbook
         Workbook workbook = new Workbook();
+        //Load the workbook from the specified file path
         workbook.loadFromFile(input);
 
-        //get the first sheet
+        //Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //apply title style
+        //Set the built-in style "Title" for the range A1:J1 in the worksheet
         sheet.getCellRange("A1:J1").setBuiltInStyle( BuiltInStyles.Title);
 
-        //save and launch result file
+        //Save the workbook to the specified output file path in Excel 2010 format
         workbook.saveToFile(output, ExcelVersion.Version2010);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

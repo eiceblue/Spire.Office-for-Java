@@ -6,39 +6,43 @@ public class formatCellsWithStyle {
         String input = "data/SampleB_2.xlsx";
         String output = "output/formatCellsWithStyle.xlsx";
 
-        //load the document from disk
+        //Create a new Workbook object
         Workbook workbook = new Workbook();
         workbook.loadFromFile(input);
 
-        //create a style
+        //Create a new CellStyle object named "newStyle"
         CellStyle style = workbook.getStyles().addStyle("newStyle");
 
-        //set the shading color
+        //Set the color of the style to DarkGray
         style.setColor( Color.DARK_GRAY);
 
-        //set the font color
+        //Set the font color of the style to White
         style.getFont().setColor( Color.WHITE);
 
-        //set font name
+        //Set the font name of the style to "Times New Roman"
         style.getFont().setFontName( "Times New Roman");
 
-        //set font size
+        //Set the font size of the style to 12
         style.getFont().setSize(12);
 
-        //set bold for the font
+        //Make the font bold in the style
         style.getFont().isBold(true);
 
-        //set text rotation
+        // Set the rotation angle of the style to 45 degrees
         style.setRotation(45);
 
-        //set alignment
+        //Set the horizontal alignment of the style to Center
         style.setHorizontalAlignment( HorizontalAlignType.Center);
+        //Set the vertical alignment of the style to Center
         style.setVerticalAlignment(VerticalAlignType.Center);
 
-        //set the style for the specific range
+        //Apply the style to the range A1:J1 in the first worksheet of the workbook
         workbook.getWorksheets().get(0).getCellRange("A1:J1").setCellStyleName( style.getName());
 
-        //save the result file
+        //Save the workbook to the specified file in Excel 2013 format
         workbook.saveToFile(output, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

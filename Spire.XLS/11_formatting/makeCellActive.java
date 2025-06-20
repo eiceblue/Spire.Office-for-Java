@@ -5,27 +5,31 @@ public class makeCellActive {
         String inputFile="data/templateAz.xlsx";
         String outputFile = "output/makeCellActive_result.xlsx";
 
-        //Create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
-        //Read an Excel file
+
+        // Load the workbook from the input file
         workbook.loadFromFile(inputFile);
 
-        //Get the 2nd sheet
-        Worksheet sheet =  workbook.getWorksheets().get(1);
+        // Get the second worksheet from the workbook
+        Worksheet sheet = workbook.getWorksheets().get(1);
 
-        //Set the 2nd sheet as an active sheet.
+        // Activate the worksheet
         sheet.activate();
 
-        //Set B2 cell as an active cell in the worksheet.
+        // Set the active cell to cell range "B2"
         sheet.setActiveCell(sheet.getCellRange("B2"));
 
-        //Set the B column as the first visible column in the worksheet.
+        // Set the first visible column to column index 1
         sheet.setFirstVisibleColumn(1);
 
-        //Set the 2nd row as the first visible row in the worksheet.
+        // Set the first visible row to row index 1
         sheet.setFirstVisibleRow(1);
 
-        //Save to file
+        // Save the modified workbook to the output file in Excel 2013 format
         workbook.saveToFile(outputFile, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

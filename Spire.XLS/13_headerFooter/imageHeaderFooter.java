@@ -9,28 +9,33 @@ public class imageHeaderFooter {
         String outputFile = "output/imageHeaderFooter_result.xlsx";
         String imageFile = "data/logo.png";
 
-        //Load a Workbook from disk
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
+
+        // Load the Excel file from a specified path
         workbook.loadFromFile(inputFile);
 
-        //Get the first sheet
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Load an image from disk
+        // Create an Image object from a specified image file
         BufferedImage image = ImageIO.read( new File(imageFile));
 
-        //Set the image header
+        // Set the left header image and text for the page setup
         sheet.getPageSetup().setLeftHeaderImage(image);
         sheet.getPageSetup().setLeftHeader("&G");
 
-        //Set the image footer
+        // Set the center footer image and text for the page setup
         sheet.getPageSetup().setCenterFooterImage(image);
         sheet.getPageSetup().setCenterFooter("&G");
 
-        //Set the view mode of the sheet
+        // Set the view mode of the sheet to Layout
         sheet.setViewMode(ViewMode.Layout);
 
-        //Save the Excel file
+        // Save the modified workbook to a specified path with Excel 2010 format
         workbook.saveToFile(outputFile, ExcelVersion.Version2010);
+
+        // Release the resources used by the workbook
+        workbook.dispose();
     }
 }

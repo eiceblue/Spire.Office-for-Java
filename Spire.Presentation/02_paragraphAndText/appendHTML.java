@@ -1,19 +1,17 @@
-import java.awt.Color;
-import java.awt.Rectangle;
 import com.spire.presentation.*;
-import com.spire.presentation.drawing.FillFormatType;
+import com.spire.presentation.drawing.*;
+
+import java.awt.*;
 
 public class appendHTML {
     public static void main(String[] args) throws Exception {
-        String inputFile = "data/appendHTML.pptx";
-        String outputFile = "output/appendHTML_result.pptx";
-
         //Create a PPT document and load file
         Presentation ppt = new Presentation();
-        ppt.loadFromFile(inputFile);
+        ppt.loadFromFile("data/template_Az.pptx");
 
         //Add a shape
-        IAutoShape shape = ppt.getSlides().get(0).getShapes().appendShape(ShapeType.RECTANGLE, new Rectangle(150, 100, 200, 200));
+        IAutoShape shape = ppt.getSlides().get(0).getShapes().appendShape(ShapeType.RECTANGLE,
+                new Rectangle(150, 100, 200, 200));
 
         //Clear default paragraphs
         shape.getTextFrame().getParagraphs().clear();
@@ -46,6 +44,8 @@ public class appendHTML {
         textRange.getFill().setFillType(FillFormatType.SOLID);
         textRange.getFill().getSolidColor().setColor(Color.black);
 
-        ppt.saveToFile(outputFile, FileFormat.PPTX_2010);
+        //Save the document
+        String output = "output/appendHTML.pptx";
+        ppt.saveToFile(output, FileFormat.PPTX_2010);
     }
 }

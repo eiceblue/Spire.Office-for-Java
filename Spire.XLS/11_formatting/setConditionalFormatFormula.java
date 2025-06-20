@@ -6,42 +6,44 @@ import java.awt.*;
 
 public class setConditionalFormatFormula {
     public static void main(String[] args) {
-        //Create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //Get the default first  worksheet
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Add ConditionalFormat
+        // Add conditional formats to apply formatting based on conditions
+
+        // Create a new XlsConditionalFormats object
         XlsConditionalFormats xcfs = sheet.getConditionalFormats().add();
-
-        //Define the range
+        // Add the cell range "B5" to the conditional format
         xcfs.addRange(sheet.getCellRange("B5"));
-
-        //Add condition
+        // Create a conditional format based on cell value
         IConditionalFormat format = xcfs.addCondition();
+        // Set the format type to CellValue
         format.setFormatType(ConditionalFormatType.CellValue);
-
-        //If greater than 1000
+        // Set the first formula to "1000"
         format.setFirstFormula("1000");
+        // Set the comparison operator to Greater
         format.setOperator(ComparisonOperatorType.Greater);
+        // Set the background color to orange for cells meeting the condition
         format.setBackColor(Color.orange);
 
+        // Set values and formulas in specific cells of the worksheet
         sheet.getCellRange("B1").setNumberValue(40);
         sheet.getCellRange("B2").setNumberValue(500);
         sheet.getCellRange("B3").setNumberValue(300);
         sheet.getCellRange("B4").setNumberValue(400);
-
-        //Set a SUM formula for B5
         sheet.getCellRange("B5").setFormula("=SUM(B1:B4)");
 
-        //Add text
+        // Add text to describe the conditional format
         sheet.getCellRange("C5").setText("If Sum of B1:B4 is greater than 1000, B5 will have orange background.");
 
-        //String for output file
+        // Save the modified workbook to the output file in Excel 2013 format
         String outputFile = "output/setConditionalFormatFormula_result.xlsx";
-
-        //Save the file
         workbook.saveToFile(outputFile, ExcelVersion.Version2013);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

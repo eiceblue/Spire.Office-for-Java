@@ -1,22 +1,24 @@
 import com.spire.doc.*;
-import java.util.regex.Pattern;
+import java.util.regex.*;
 
 public class replaceTextByRegex {
     public static void main(String[] args) {
-        String input = "data/replaceTextByRegex.docx";
-        String output = "output/replaceTextByRegex.docx";
-        //load Word document
-        Document document = new Document();
-        document.loadFromFile(input, FileFormat.Docx);
+        //Create word document
+        Document doc = new Document();
 
-        //create a regex, match the text that starts with "#"
-        String regEx="\\#\\w+\\b";
-        Pattern pattern= Pattern.compile(regEx);
+        // Load the document from disk.
+        doc.loadFromFile("data/ReplaceTextByRegex.docx");
 
-        //replace the text by regex
-        document.replace(pattern,"Spire.Doc");
+        //Compiles the given regular expression into a pattern.
+        Pattern regex=Pattern.compile("\\#\\w+\\b");
 
-        //save the document
-        document.saveToFile(output,FileFormat.Docx);
+        // replace the text by regex
+        doc.replace(regex,"Spire.Doc");
+
+        // save the document
+        doc.saveToFile("output/replaceTextByRegex.docx", FileFormat.Docx_2013);
+
+        //Dispose the document
+        doc.dispose();
     }
 }

@@ -1,0 +1,36 @@
+<html>
+<head>
+<style type="text/css">
+li,p
+{
+font-family:'Lucida Sans Unicode';
+font-size:14pt;
+}
+</style>
+</head>
+<body>
+<font size="16pt" color="blue"><h2 align="center">Spire.Doc</h2></font>
+<p>
+<b>Edition:</b>
+</p>
+<ul type="disc">
+<li>
+<span style='color:green;'>Free Edition</span>
+</li>
+<li>Trial version</li>
+<li>
+<span style='color:red'>A month free for trial version</span>
+</li>
+</ul>
+</ul>
+<p>
+<b>Platform:</b>
+</p>
+<ul type="square">
+<li>.NET</li>
+<li>Java</li>
+<li>WPF</li>
+<li>Silverlight</li>
+</ul>
+</body>
+</html>

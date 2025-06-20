@@ -1,14 +1,10 @@
 import com.spire.presentation.*;
-import com.spire.presentation.NumberedBulletStyle;
 
 public class bullets {
     public static void main(String[] args) throws Exception {
-        String inputFile = "data/bulltes.pptx";
-        String outputFile = "output/bullets_result.pptx";
-
         //Load a PPT document
         Presentation presentation = new Presentation();
-        presentation.loadFromFile(inputFile);
+        presentation.loadFromFile("data/bulltes.pptx");
 
         IAutoShape shape = (IAutoShape) presentation.getSlides().get(0).getShapes().get(1);
 
@@ -19,8 +15,8 @@ public class bullets {
             paragraph.setBulletStyle(NumberedBulletStyle.BULLET_ROMAN_LC_PERIOD);
         }
 
-        //Save the document and launch
-        presentation.saveToFile(outputFile, FileFormat.PPTX_2010);
+        //Save the document
+        String output = "output/bullets.pptx";
+        presentation.saveToFile(output, FileFormat.PPTX_2013);
     }
 }
-

@@ -1,24 +1,28 @@
 import com.spire.doc.*;
-import com.spire.doc.documents.TextSelection;
+import com.spire.doc.documents.*;
 import java.awt.*;
 
 public class findAndHighlight {
     public static void main(String[] args) {
-        String input = "data/findAndHighlight.docx";
-        String output = "output/findAndHighlight.docx";
-        //load Word document
+        //Create a word document.
         Document document = new Document();
-        document.loadFromFile(input);
 
-        //find Text
-        TextSelection[] textSelections = document.findAllString("Word", false, true);
+        // Load the document from disk.
+        document.loadFromFile("data/Sample.docx");
 
-        //set highlight
-        for (TextSelection selection : textSelections) {
-            selection.getAsOneRange().getCharacterFormat().setHighlightColor(Color.YELLOW);
+        //Find text.
+        TextSelection[] textSelections = document.findAllString("word", false, true);
+
+        //Loop through the textSelections
+        for (TextSelection selection : textSelections){
+            // Set highlight.
+            selection.getAsOneRange().getCharacterFormat().setHighlightColor(Color.yellow);
         }
 
-        //save the file
-        document.saveToFile(output, FileFormat.Docx_2010);
+        // Save to file.
+        document.saveToFile("output/findAndHighlight.docx", FileFormat.Docx_2013);
+
+        //Dispose the document
+        document.dispose();
     }
 }

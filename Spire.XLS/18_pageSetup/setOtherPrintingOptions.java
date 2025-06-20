@@ -5,37 +5,40 @@ public class setOtherPrintingOptions {
         String inputFile="data/template_Xls_4.xlsx";
         String outputFile="output/setOtherPrintingOptions_result.xlsx";
 
-        //Create a workbook.
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //Load the file from disk.
+        // Load an Excel file from the specified input file path
         workbook.loadFromFile(inputFile);
 
-        //Get the first worksheet.
+        // Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Get the reference of the PageSetup of the worksheet.
+        // Get the PageSetup object from the worksheet
         PageSetup pageSetup = sheet.getPageSetup();
 
-        //Allow to print gridlines.
+        // Set the option to print gridlines on the page setup
         pageSetup.isPrintGridlines(true);
 
-        //Allow to print row/column headings.
+        // Set the option to print headings on the page setup
         pageSetup.isPrintHeadings(true);
 
-        //Allow to print worksheet in black & white mode.
+        // Set the page setup to black and white
         pageSetup.setBlackAndWhite(true);
 
-        //Allow to print comments as displayed on worksheet.
+        // Set the type of comments to print on the page setup
         pageSetup.setPrintComments(PrintCommentType.InPlace);
 
-        //Allow to print cell errors as N/A.
+        // Set the type of errors to print on the page setup
         pageSetup.setPrintErrors(PrintErrorsType.NA);
 
-        //Allow to print worksheet with draft quality.
+        // Set the page setup to draft mode
         pageSetup.setDraft(true);
 
-        //Save to file.
+        // Save the modified workbook to the specified output file path in Excel 2013 format
         workbook.saveToFile(outputFile, ExcelVersion.Version2013);
+
+        // Release any resources used by the workbook
+        workbook.dispose();
     }
 }

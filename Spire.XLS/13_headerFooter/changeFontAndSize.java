@@ -5,24 +5,31 @@ public class changeFontAndSize {
         String inputFile = "data/changeFontAndSizeForHeaderAndFooter.xlsx";
         String outputFile = "output/changeFontAndSizeForHeaderAndFooter_result.xlsx";
 
-        //Create a workbook.
+        // Create a new workbook object
         Workbook workbook = new Workbook();
 
-        //Load the file from disk.
+        // Load an existing workbook from a file
         workbook.loadFromFile(inputFile);
 
-        //Get the first worksheet.
+        // Get the first worksheet in the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Set the new font and size for the header and footer
+
         String text = sheet.getPageSetup().getLeftHeader();
 
         //"Arial Unicode MS" is font name, "18" is font size
         text = "&\"Arial Unicode MS\"&18 Header Footer Sample by Spire.XLS ";
+
+        // Update the left header text with a custom string and font size
         sheet.getPageSetup().setLeftHeader(text);
+
+        // Update the right footer text with a custom string and font size
         sheet.getPageSetup().setRightFooter(text);
 
-        //Save to file.
+        // Save the modified workbook to a file
         workbook.saveToFile(outputFile, ExcelVersion.Version2013);
+
+        // Release the resources used by the workbook
+        workbook.dispose();
     }
 }

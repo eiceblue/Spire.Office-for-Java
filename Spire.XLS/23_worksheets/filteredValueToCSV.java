@@ -1,5 +1,3 @@
-package worksheets;
-
 import com.spire.xls.*;
 
 public class filteredValueToCSV {
@@ -7,16 +5,19 @@ public class filteredValueToCSV {
         String input = "data/FilteredSample.xlsx";
         String output = "output/filteredValueToCSV.csv";
 
-        //create a workbook
+        // Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //load the document from disk
+        // Load the Excel file from the specified input path
         workbook.loadFromFile(input);
 
-        //get the first worksheet from the workbook
+        // Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //save to csv file
+        // Save the worksheet to the specified output path, with space as delimiter and without auto-filtering
         sheet.saveToFile(output, " ", false);
+
+        // Dispose the workbook to release resources
+        workbook.dispose();
     }
 }

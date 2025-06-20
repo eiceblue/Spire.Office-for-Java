@@ -6,25 +6,31 @@ public class setBorder {
         String inputFile="data/setBorder.xlsx";
         String outputFile = "output/setBorder_result.xlsx";
 
-        //Create a workbook
+        //Create a new Workbook object
         Workbook workbook = new Workbook();
 
-        //Load the document from disk
+        //Load the Excel file from the specified path
         workbook.loadFromFile(inputFile);
 
-        //Get the first worksheet
+        //Get the first worksheet from the workbook
         Worksheet sheet = workbook.getWorksheets().get(0);
 
-        //Get the cell range where you want to apply border style
+        //Define a CellRange object that includes all cells in the worksheet
         CellRange cr = sheet.getCellRange(sheet.getFirstRow(), sheet.getFirstColumn(), sheet.getLastRow(), sheet.getLastColumn());
 
-        //Apply border style
+        //Set the border style of the CellRange to Double line
         cr.getBorders().setLineStyle(LineStyleType.Double);
+        //Set the diagonal down border style of the CellRange to None
         cr.getBorders().getByBordersLineType(BordersLineType.DiagonalDown).setLineStyle(LineStyleType.None);
+        //Set the diagonal up border style of the CellRange to None
         cr.getBorders().getByBordersLineType(BordersLineType.DiagonalUp).setLineStyle(LineStyleType.None);
+        //Set the border color of the CellRange to Blue
         cr.getBorders().setColor(Color.BLUE);
 
-        //Save the document
+        //Save the modified workbook to the specified file path with Excel version 2010
         workbook.saveToFile(outputFile, ExcelVersion.Version2010);
+
+        //Release the resources used by the workbook
+        workbook.dispose();
     }
 }

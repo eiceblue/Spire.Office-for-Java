@@ -5,14 +5,19 @@ public class renameNamedRange {
         String inputFile="data/allNamedRanges.xlsx";
         String outputFile="output/renameNamedRange_result.xlsx";
 
-        //Create a workbook and load the document from disk
+        // Create a new Workbook object to represent an Excel workbook
         Workbook workbook = new Workbook();
+
+        // Load the contents of the input file into the Workbook object
         workbook.loadFromFile(inputFile);
 
-        //Rename the named range
+        // Retrieve the first named range in the workbook and set its name to "RenameRange"
         workbook.getNameRanges().get(0).setName("RenameRange");
 
-        //Save the file
+        // Save the modified workbook to the specified output file in Excel 2010 format
         workbook.saveToFile(outputFile, ExcelVersion.Version2010);
+
+        // Clean up and release any resources associated with the workbook
+        workbook.dispose();
     }
 }

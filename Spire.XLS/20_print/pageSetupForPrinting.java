@@ -1,61 +1,75 @@
 import java.awt.print.*;
-
 import com.spire.xls.*;
 
 public class pageSetupForPrinting {
-	public static void main(String[] args) {
-        //Create a workbook
-        Workbook workbook = new Workbook();
+        public static void main(String[] args) {
+                // Create a new Workbook object
+                Workbook workbook = new Workbook();
 
-        //Load the Excel document from disk
-        workbook.loadFromFile("data/createTable.xlsx");
+                // Load an existing Excel file into the Workbook
+                workbook.loadFromFile("data/createTable.xlsx");
 
-        //Get the first worksheet
-        Worksheet worksheet = workbook.getWorksheets().get(0);
+                // Get the first worksheet from the Workbook
+                Worksheet worksheet = workbook.getWorksheets().get(0);
 
-        //Specifying the print area
-        PageSetup pageSetup = worksheet.getPageSetup();
-        pageSetup.setPrintArea("A1:E19");
+                // Get the PageSetup for the worksheet
+                PageSetup pageSetup = worksheet.getPageSetup();
 
-        //Define column A & E as title columns
-        pageSetup.setPrintTitleColumns("$A:$E");
+                // Set the print area for the worksheet to cells A1:E19
+                pageSetup.setPrintArea("A1:E19");
 
-        //Define row numbers 1 as title rows
-        pageSetup.setPrintTitleRows("$1:$2");
+                // Set the columns A:E as titles to repeat on each printed page
+                pageSetup.setPrintTitleColumns("$A:$E");
 
-        //Allow to print with gridlines
-        pageSetup.isPrintGridlines(true);
+                // Set the rows 1:2 as titles to repeat on each printed page
+                pageSetup.setPrintTitleRows("$1:$2");
 
-        //Allow to print with row/column headings
-        pageSetup.isPrintHeadings(true); 
+                // Enable printing of gridlines
+                pageSetup.isPrintGridlines(true);
 
-        //Allow to print worksheet in black & white mode
-        pageSetup.setBlackAndWhite(true);
+                // Enable printing of headings
+                pageSetup.isPrintHeadings(true);
 
-        //Allow to print comments as displayed on worksheet
-        pageSetup.setPrintComments(PrintCommentType.InPlace);
+                // Set the worksheet to be printed in black and white
+                pageSetup.setBlackAndWhite(true);
 
-        //Set printing quality
-        pageSetup.setPrintQuality(150);
+                // Set the option to print comments in place
+                pageSetup.setPrintComments(PrintCommentType.InPlace);
 
-        //Set the printing order 
-        pageSetup.setOrder(OrderType.OverThenDown);
+                // Set the print quality to 150 dpi
+                pageSetup.setPrintQuality(150);
 
-        PrinterJob loPrinterJob = PrinterJob.getPrinterJob();
-        PageFormat loPageFormat  = loPrinterJob.defaultPage();
-        Paper loPaper = loPageFormat.getPaper();
-        
-        //Remove the default printing margins
-        loPaper.setImageableArea(0,0,loPageFormat.getWidth(),loPageFormat.getHeight());
-        //Set the number of copies
-        loPrinterJob.setCopies(1);
-        loPageFormat.setPaper(loPaper);
-        loPrinterJob.setPrintable(workbook,loPageFormat);
+                // Set the order of printing to over then down
+                pageSetup.setOrder(OrderType.OverThenDown);
 
-        try {
-            loPrinterJob.print();
-        } catch (PrinterException e) {
-            e.printStackTrace();
+                // Get the default PrinterJob
+                PrinterJob loPrinterJob = PrinterJob.getPrinterJob();
+
+                // Get the default PageFormat
+                PageFormat loPageFormat = loPrinterJob.defaultPage();
+
+                // Get the Paper object from the PageFormat
+                Paper loPaper = loPageFormat.getPaper();
+
+                // Set the imageable area of the Paper to cover the entire page
+                loPaper.setImageableArea(0, 0, loPageFormat.getWidth(), loPageFormat.getHeight());
+
+                // Set the number of copies to 1
+                loPrinterJob.setCopies(1);
+
+                // Set the paper of the PageFormat to the modified Paper object
+                loPageFormat.setPaper(loPaper);
+
+                // Set the printable object to the workbook and PageFormat to the modified PageFormat
+                loPrinterJob.setPrintable(workbook, loPageFormat);
+
+                try {
+                        // Print the workbook using the PrinterJob
+                        loPrinterJob.print();
+                } catch (PrinterException e) {
+                        e.printStackTrace();
+                }
+                // Clean up resources and release memory
+                workbook.dispose();
         }
-	}
 }
